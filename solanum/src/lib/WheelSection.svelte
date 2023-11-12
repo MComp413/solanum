@@ -2,14 +2,25 @@
   export let wheelSection: SectionData;
   export let totalSections: number;
 
-  $: rotation = (360 / totalSections) * wheelSection.order;
-  $: textRotation = 180 / totalSections;
-  $: fr = 100 / totalSections;
+  function toRadians(degrees: number) {
+    return (Math.PI * degrees) / 180;
+  }
+
+  $: apertureDegrees = 360 / totalSections;
+  $: rotation = apertureDegrees * wheelSection.order;
+  $: textRotation = apertureDegrees / totalSections;
+
+  $: aperturePercent =
+    100 * (1 - Math.tan(toRadians(45 - apertureDegrees / 2)));
+  $: clipPath = `polygon(0% ${aperturePercent}%, 0% 0%, ${aperturePercent}% 0%, 100% 100%)`;
 </script>
 
 <div
   class="wheel-section"
-  style="transform: rotate({rotation}deg); background-color: {wheelSection.backgroundColor}; "
+  style="
+  transform: rotate({rotation}deg);
+  background-color: {wheelSection.backgroundColor};
+  clip-path: {clipPath}"
 >
   <span style="transform: rotate({textRotation}deg)">{wheelSection.label}</span>
 </div>
@@ -23,8 +34,6 @@
     align-items: center;
     height: 50%;
     width: 50%;
-    border-radius: 15%;
-    clip-path: polygon(0% 60%, 0% 0%, 60% 0%, 100% 100%);
 
     span {
       font-size: xx-large;
