@@ -95,3 +95,8 @@ button {
     background-color: #0f0f0f69;
   }
 }
+
+html, body, div#app {
+  height: 99.52%;
+  width: 99.75%;
+}

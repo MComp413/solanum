@@ -24,6 +24,7 @@
     height: 50%;
     width: 50%;
     border-radius: 15%;
+    clip-path: polygon(0% 60%, 0% 0%, 60% 0%, 100% 100%);
 
     span {
       font-size: xx-large;

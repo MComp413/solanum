@@ -48,6 +48,10 @@
     flex-direction: column;
     width: min-content;
     height: 100%;
+
+    position: fixed;
+    left: 0;
+    top: 0;
   }
 
   .header {
