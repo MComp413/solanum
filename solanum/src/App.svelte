@@ -1,6 +1,12 @@
 <script lang="ts">
+  import { envConstants } from "./constants";
   import SectionEdit from "./lib/SectionEdit.svelte";
   import Wheel from "./lib/Wheel.svelte";
+
+  const subliminarImage = envConstants["subliminarImage"];
+  const waitingAudio = envConstants["waitingAudio"];
+  const spinAudio = envConstants["spinAudio"];
+  const resultAudio = envConstants["resultAudio"];
 
   let wheelSections: SectionData[] = [];
   let maxId: number = 0;

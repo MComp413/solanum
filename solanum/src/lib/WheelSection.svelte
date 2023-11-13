@@ -8,11 +8,10 @@
 
   $: apertureDegrees = 360 / totalSections;
   $: rotation = apertureDegrees * wheelSection.order;
-  $: textRotation = apertureDegrees / totalSections;
+  $: textRotation = apertureDegrees;
 
   $: aperturePercent =
     100 * (1 - Math.tan(toRadians(45 - apertureDegrees / 2)));
-  $: clipPath = `polygon(0% ${aperturePercent}%, 0% 0%, ${aperturePercent}% 0%, 100% 100%)`;
 </script>
 
 <div
@@ -20,7 +19,7 @@
   style="
   transform: rotate({rotation}deg);
   background-color: {wheelSection.backgroundColor};
-  clip-path: {clipPath}"
+  clip-path: polygon(0% {aperturePercent}%, 0% 0%, {aperturePercent}% 0%, 100% 100%)"
 >
   <span style="transform: rotate({textRotation}deg)">{wheelSection.label}</span>
 </div>
