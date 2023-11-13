@@ -13,9 +13,9 @@
   <div class="header">
     <button on:click={() => (hidden = !hidden)}>
       {#if hidden}
-        {">>"}
+        {"▶️"}
       {:else}
-        {"<<"}
+        {"◀️"}
       {/if}
     </button>
   </div>
@@ -36,7 +36,7 @@
         </li>
       {/each}
       <li>
-        <button on:click={addSection}> + </button>
+        <button on:click={addSection}> 🍕 </button>
       </li>
     </ol>
   {/if}
@@ -57,7 +57,12 @@
   .header {
     display: flex;
     flex-direction: row-reverse;
-    height: 10%;
+    align-items: center;
+    padding: 0.5rem 0;
+
+    button {
+      padding: 0.5rem;
+    }
   }
 
   ol {

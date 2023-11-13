@@ -14,8 +14,8 @@
   <div class="row">
     <input type="text" name="label" bind:value={label} placeholder="Label" />
     <input name="backgroundColor" type="color" bind:value={backgroundColor} />
-    <button on:click={() => copySection(sectionId)}> CC </button>
-    <button on:click={() => deleteSection(sectionId)}> X </button>
+    <!-- <button on:click={() => copySection(sectionId)}> 📄</button> -->
+    <button on:click={() => deleteSection(sectionId)}> ❌ </button>
   </div>
   <div class="row">
     <!-- <label>
