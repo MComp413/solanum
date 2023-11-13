@@ -8,6 +8,12 @@
   const spinAudio = envConstants["spinAudio"];
   const resultAudio = envConstants["resultAudio"];
 
+  const waitingAudioNode = new Audio(`./public/audio/${waitingAudio}`);
+  function stopWaitingTrack() {
+    waitingAudioNode.pause();
+  }
+
+  let wheelReset: boolean = false;
   let wheelSections: SectionData[] = [];
   let maxId: number = 0;
 
@@ -46,17 +52,29 @@
     });
     wheelSections = wheelSections;
   }
+
+  function playWaitingTrack() {
+    waitingAudioNode.play();
+  }
 </script>
 
 <main class="container">
   <SectionEdit bind:wheelSections {copySection} {deleteSection} {addSection} />
-  <Wheel
-    {wheelSections}
-    {resultAudio}
-    {spinAudio}
-    {waitingAudio}
-    {subliminarImage}
-  />
+  {#key wheelReset}
+    <Wheel
+      {wheelSections}
+      {resultAudio}
+      {spinAudio}
+      {subliminarImage}
+      {stopWaitingTrack}
+    />
+  {/key}
+  <div class="controls">
+    <button on:click={() => playWaitingTrack()}> Vinheta </button>
+    <button class="reset" on:click={() => (wheelReset = !wheelReset)}>
+      Reset
+    </button>
+  </div>
 </main>
 
 <style>
@@ -70,5 +88,13 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+  }
+
+  .controls {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    bottom: 0;
+    right: 0;
   }
 </style>

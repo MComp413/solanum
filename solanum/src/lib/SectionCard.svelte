@@ -13,12 +13,12 @@
 <div class="wrapper">
   <div class="row">
     <input type="text" name="label" bind:value={label} placeholder="Label" />
+    <input name="backgroundColor" type="color" bind:value={backgroundColor} />
     <button on:click={() => copySection(sectionId)}> CC </button>
     <button on:click={() => deleteSection(sectionId)}> X </button>
   </div>
   <div class="row">
-    <input name="backgroundColor" type="color" bind:value={backgroundColor} />
-    <label>
+    <!-- <label>
       <span>Arquivo</span>
       <input
         hidden
@@ -27,7 +27,7 @@
         bind:value={backgroundImage}
       />
     </label>
-    <input name="weight" type="number" bind:value={weight} />
+    <input name="weight" type="number" bind:value={weight} /> -->
   </div>
   <div class="row" />
 </div>

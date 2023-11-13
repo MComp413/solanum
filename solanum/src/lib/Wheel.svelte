@@ -2,9 +2,12 @@
   import WheelSection from "./WheelSection.svelte";
 
   export let subliminarImage: string;
-  export let waitingAudio: string;
   export let spinAudio: string;
   export let resultAudio: string;
+  export let stopWaitingTrack: () => void;
+
+  const spinAudioNode = new Audio(`./public/audio/${spinAudio}`);
+  const resultAudioNode = new Audio(`./public/audio/${resultAudio}`);
 
   export let wheelSections: SectionData[];
   let orderedWheelSections: SectionData[];
@@ -17,15 +20,16 @@
 
   function callSubliminarTimeouts() {
     setTimeout(() => (displaySubliminar = true), 5.5 * 1000);
-    setTimeout(() => (displaySubliminar = false), 5.75 * 1000);
+    setTimeout(() => (displaySubliminar = false), 5.8 * 1000);
   }
 
   function playSpinTrack() {
-    const audio = new Audio(`./public/audio/${spinAudio}`);
-    audio.play();
+    stopWaitingTrack();
+    spinAudioNode.play();
     setTimeout(() => {
-      audio.pause();
-    }, 10 * 1000);
+      spinAudioNode.pause();
+      resultAudioNode.play();
+    }, 14 * 1000);
   }
 
   function spin() {
@@ -72,7 +76,7 @@
     position: relative;
     height: 100%;
     width: 100%;
-    transition: transform 10s ease;
+    transition: transform 14s ease;
   }
 
   .center::before {
