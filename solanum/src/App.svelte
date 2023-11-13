@@ -50,7 +50,13 @@
 
 <main class="container">
   <SectionEdit bind:wheelSections {copySection} {deleteSection} {addSection} />
-  <Wheel {wheelSections} />
+  <Wheel
+    {wheelSections}
+    {resultAudio}
+    {spinAudio}
+    {waitingAudio}
+    {subliminarImage}
+  />
 </main>
 
 <style>
