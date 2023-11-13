@@ -70,14 +70,14 @@
     />
   {/key}
   <div class="controls">
-    <button on:click={() => playWaitingTrack()}> Vinheta </button>
+    <button on:click={() => playWaitingTrack()}> Vinheta 🔊 </button>
     <button class="reset" on:click={() => (wheelReset = !wheelReset)}>
-      Reset
+      Reset 🔄️
     </button>
   </div>
 </main>
 
-<style>
+<style lang="scss">
   .container {
     padding: 0;
     height: 100%;
@@ -94,7 +94,13 @@
     position: fixed;
     display: flex;
     flex-direction: column;
+    row-gap: 0.5rem;
     bottom: 0;
     right: 0;
+    padding: 0.5rem;
+
+    button {
+      padding: 0.5rem;
+    }
   }
 </style>
